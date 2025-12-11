@@ -115,7 +115,7 @@ const [openh, setOpenh] = useState(false);
 
         {/* Navbar */}
           <nav
-            className="fixed top-6 left-1/2 -translate-x-1/2 bg-white/90 backdrop-blur-md shadow-md rounded-2xl py-3 w-[92%]       
+            className="fixed top-6 left-1/2 -translate-x-1/2 bg-white/95 backdrop-blur-md shadow-2xl rounded-2xl py-3 w-[92%]       
             max-w-7xl md:w-full flex items-center h-20 justify-between px-4 md:px-8 z-50"
           >
             {/* Logo kiri */}
@@ -436,20 +436,20 @@ const [openh, setOpenh] = useState(false);
                 <CardContent className="space-y-6 text-white text-sm">
                   <div className="flex gap-3 items-start">
                     <MapPin className="w-5" />
-                    <p>12 B Krutogirny uzviz, Dnipro, Ukraine</p>
+                    <p>8R2W+332 Malang, Jl. Raya Pasuruan No.KM11, Tromo Barat, Pacar Keling, Kec. Kejayan, Pasuruan, Jawa Timur 67172</p>
                   </div>
 
                   <div className="flex gap-3 items-start">
                     <Phone className="w-5" />
                     <p>
-                      +1 415-871-0460 <br />
-                      +380 634 181 201
+                      (0343) 414200 <br />
+                      (0341) 426244
                     </p>
                   </div>
 
                   <div className="flex gap-3 items-start">
                     <Mail className="w-5" />
-                    <p>hello@lanars.com</p>
+                    <p>info@ho.otsuka.co.id</p>
                   </div>
                 </CardContent>
               </Card>
@@ -541,15 +541,15 @@ const [openh, setOpenh] = useState(false);
               <ul className="space-y-3 text-sm">
                 <li className="flex gap-2">
                   <Phone className="w-4" />
-                  +1 415-871-0460
+                  +62-21 7654466
                 </li>
                 <li className="flex gap-2">
                   <Mail className="w-4" />
-                  hello@lanars.com
+                  info@ho.otsuka.co.id
                 </li>
                 <li className="flex gap-2">
                   <MapPin className="w-4" />
-                  12 B Krutogirny uzviz, Dnipro, Ukraine
+                  Pondok Indah Office Tower 1 Lantai 8, Jl. Sultan Iskandar Muda Kav. V - TA, Jakarta Selatan 12310 (Kantor Utama)
                 </li>
               </ul>
             </div>

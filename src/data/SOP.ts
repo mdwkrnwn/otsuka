@@ -2,6 +2,7 @@ export const SOP = [
   {
     id: 1,
     name: "SOP Jam Kerja dan \n Istirahat Karyawan",
+
     tujuan:
       "Mengatur jam kerja dan jam istirahat agar produktivitas dan keselamatan kerja terjaga.",
     image: "/images/1.jpg",
