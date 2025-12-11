@@ -567,7 +567,7 @@ const [openh, setOpenh] = useState(false);
             </div>
 
             <p className="text-xs text-gray-400">
-              © 2025 Otsuka Health Corporation. All rights reserved.
+              © 2025 Oli Samping Studio. All rights reserved.
             </p>
           </div>
 
