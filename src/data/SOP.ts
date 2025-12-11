@@ -2,13 +2,11 @@ export const SOP = [
   {
     id: 1,
     name: "SOP Jam Kerja dan \n Istirahat Karyawan",
-    tujuan: "Mengatur jam kerja dan jam istirahat agar produktivitas dan keselamatan kerja terjaga.",
+    tujuan: "Menjamin keteraturan, produktivitas, dan keselamatan selama jam kerja.",
     image: "/images/1.jpg",
-    ruangLingkup: "Seluruh karyawan tetap, kontrak, dan magang di lingkungan perusahaan.",
+    ruangLingkup: "Seluruh karyawan, termasuk staf administrasi, produksi, dan laboratorium.",
     prosedur: [
-      "Peserta mengisi formulir",
-      "Admin verifikasi data",
-      "Peserta menerima bukti pendaftaran"
+      "Jam Kerja Reguler",
     ]
   },
   {
