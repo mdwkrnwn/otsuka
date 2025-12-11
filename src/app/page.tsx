@@ -46,7 +46,10 @@ type SopType = {
   tujuan: string;
   image: string;
   ruangLingkup: string;
-  prosedur: string[];
+    prosedur: {
+    judul: string;       
+    isi: string;       
+  }[];
 };
 
 
@@ -278,33 +281,47 @@ const [openh, setOpenh] = useState(false);
 
       {/* MODAL DETAIL SOP */}
       <Dialog open={open} onOpenChange={setOpen}>
-        <DialogContent className="w-full max-w-md sm:max-w-lg md:max-w-2xl mx-auto">
-          <DialogHeader>
-            <DialogTitle>{selected?.name}</DialogTitle>
-          </DialogHeader>
+          <DialogContent className="w-full max-w-md sm:max-w-lg md:max-w-2xl mx-auto">
+            <DialogHeader>
+              <DialogTitle>{selected?.name}</DialogTitle>
+            </DialogHeader>
 
-          {/* IMAGE */}
-          <div className="mt-2 w-full h-[250px] relative">
-            <Image
-              src={selected?.image || "/images/default.jpg"}
-              alt={selected?.name || "SOP Image"}
-              fill
-              className="object-cover rounded-lg"
-            />
-          </div>
+            {/* IMAGE */}
+            <div className="mt-2 w-full h-[250px] relative">
+              <Image
+                src={selected?.image || "/images/default.jpg"}
+                alt={selected?.name || "SOP Image"}
+                fill
+                className="object-cover rounded-lg"
+              />
+            </div>
 
-          <div className="mt-4 text-sm">
-            <p><strong>Tujuan:</strong> {selected?.tujuan}</p>
-            <p className="mt-2"><strong>Ruang Lingkup:</strong> {selected?.ruangLingkup}</p>
-            <p className="mt-2"><strong>Prosedur:</strong></p>
-            <ul className="list-disc pl-5">
-              {selected?.prosedur?.map((p, idx) => (
-                <li key={idx}>{p}</li>
-              ))}
-            </ul>
-          </div>
-        </DialogContent>
-      </Dialog>
+            {/* SCROLLABLE CONTENT */}
+            <div className="mt-4 text-sm max-h-[350px] overflow-y-auto pr-2">
+              <p><strong>Tujuan:</strong> {selected?.tujuan}</p>
+              <p className="mt-2"><strong>Ruang Lingkup:</strong> {selected?.ruangLingkup}</p>
+
+              <div className="mt-2">
+                <p className="font-bold">Prosedur:</p>
+
+                <div className="mt-2 space-y-4">
+                  {selected?.prosedur?.map((item, idx) => (
+                    <div key={idx}>
+                      {item.judul && (
+                        <p className="font-bold">{item.judul}</p>
+                      )}
+                      <p className="text-justify mt-1">
+                        {item.isi}
+                      </p>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            </div>
+
+          </DialogContent>
+        </Dialog>
+
 
 
           {/* PAGINATION */}
