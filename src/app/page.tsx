@@ -271,10 +271,12 @@ export default function Home() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
           >
-            <h3 className="text-xl font-bold text-blue-700 text-center">
+            <h3 className="text-xl font-bold text-blue-700 ">
               STANDARD OPERATING PROCEDURE
             </h3>
-            <span className="text-sm text-gray-500">{SOP.length} SOP</span>
+           <span className="text-sm text-gray-500 hidden md:inline">
+            {SOP.length} SOP
+          </span>
           </motion.div>
 
           {/* GRID ANIMATION WRAPPER */}
@@ -334,9 +336,9 @@ export default function Home() {
 
           {/* PAGINATION */}
           {/* (pagination tidak perlu animasi karena statis) */}
-<Pagination className="mt-6 items-end justify-end">
-   <PaginationContent>
-     <PaginationItem> 
+      <Pagination className="mt-6 items-end justify-end">
+        <PaginationContent>
+          <PaginationItem> 
       <PaginationPrevious href="#sop" onClick={() => currentPage > 1 && setCurrentPage(currentPage - 1)} />
          </PaginationItem> {[...Array(totalPages)].map((_, index) => (
            <PaginationItem key={index}>
@@ -346,10 +348,12 @@ export default function Home() {
                 </PaginationItem> ))}
                  {totalPages > 5 && <PaginationEllipsis />}
                  <PaginationItem> 
-                  <PaginationNext href="#sop" onClick={() => currentPage < totalPages && setCurrentPage(currentPage + 1)} /> </PaginationItem> </PaginationContent> </Pagination>
+                  <PaginationNext href="#sop" onClick={() => currentPage < totalPages && setCurrentPage(currentPage + 1)} /> </PaginationItem>
+                   </PaginationContent> 
+          </Pagination>
           {/* MODAL DETAIL */}
           <Dialog open={open} onOpenChange={setOpen}>
-            <DialogContent className="w-full max-w-md sm:max-w-lg md:max-w-2xl mx-auto">
+         <DialogContent className="w-[92%] sm:w-full max-w-md sm:max-w-lg md:max-w-2xl mx-auto">
               <DialogHeader>
                 <DialogTitle>{selected?.name}</DialogTitle>
               </DialogHeader>
@@ -359,7 +363,8 @@ export default function Home() {
                 animate={{ opacity: 1 }}
                 transition={{ duration: 0.5 }}
               >
-                <div className="mt-2 w-full h-[250px] relative">
+                <div className="mt-2 w-full h-[200px] sm:h-[250px] relative">
+
                   <Image
                     src={selected?.image || "/images/default.jpg"}
                     alt={selected?.name || "SOP Image"}
@@ -394,7 +399,7 @@ export default function Home() {
 
 
         {/* SECTION ABOUT */}
-         <section className="relative w-full py-28 bg-white" id="about">
+         <section className="relative w-full py-0 md:py-28 bg-white " id="about">
             <div className="max-w-7xl mx-auto px-4 md:px-10">
 
               {/* CONTENT */}
@@ -402,7 +407,7 @@ export default function Home() {
 
                 {/* LEFT — TEXT */}
                 <motion.div
-                  className="space-y-4 mb-30"
+                  className="space-y-4 mb-0 md:mb-30"
                   initial={{ opacity: 0, y: 30 }}
                   whileInView={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.8 }}
