@@ -17,19 +17,7 @@ import {
   DialogHeader,
   DialogTitle,
 } from "@/components/ui/dialog";
-// import {
-//   Command,
-//   CommandEmpty,
-//   CommandGroup,
-//   CommandInput,
-//   CommandItem,
-//   CommandList,
-// } from "@/components/ui/command";
-import {
-  Popover,
-  PopoverContent,
-  PopoverTrigger,
-} from "@/components/ui/popover";
+
 import {
   Pagination,
   PaginationContent,
@@ -62,9 +50,8 @@ const logos = [
 
 export default function Home() {
   const [open, setOpen] = useState(false);
-const [openh, setOpenh] = useState(false);
+  const [openh, setOpenh] = useState(false);
   
-  const [value, setValue] = useState<number | null>(null);
   const [selected, setSelected] = useState<SopType | null>(null);
 
   const handleSelect = (item: SopType) => {
@@ -171,263 +158,327 @@ const [openh, setOpenh] = useState(false);
 
         {/* Hero Section */}
        <section
-        className="relative z-20 max-w-7xl mx-auto pt-50 flex flex-col md:flex-row 
-        items-center justify-between px-4 md:px-10 gap-10"
-        id="home">
-
-        {/* Right Image */}
-        <div className="relative flex justify-center order-1 md:order-2">
-          <div
-            className="w-[350px] md:w-[500px] h-[240px] md:h-[380px] 
-            rounded-2xl overflow-hidden shadow-xl border-2 border-white/30 
-            backdrop-blur-md bg-white/40 animate-[float_6s_ease-in-out_infinite]"
+          className="relative z-20 max-w-7xl mx-auto pt-50 flex flex-col md:flex-row 
+          items-center justify-between px-4 md:px-10 gap-10"
+          id="home"
+        >
+          {/* Right Image */}
+          <motion.div
+            className="relative flex justify-center order-1 md:order-2"
+            initial={{ opacity: 0, y: 40 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8 }}
           >
-            <img
-              src="/images/otsuka.jpg"
-              alt="Otsuka"
-              className="w-full h-full object-cover"
-            />
-          </div>
-        </div>
-
-        {/* Left Content */}
-        <div className="flex flex-col text-center md:text-left max-w-xl order-2 md:order-1">
-          <h1 className="text-blue-700 font-bold text-3xl md:text-5xl leading-snug">
-            INOVASI KESEHATAN.
-            <br />
-            UNTUK SEMUA ORANG.
-          </h1>
-
-          <p className="text-gray-600 mt-4 text-base md:text-lg leading-relaxed">
-            Menyediakan standar operasional prosedur dengan informasi yang tepat, cepat,
-            dan mudah diakses untuk mendukung peningkatan kualitas kesehatan masyarakat.
-          </p>
-
-          <div className="mt-6 flex justify-center md:justify-start">
-            <a
-              href="#sop"
-              className="bg-blue-600 hover:bg-blue-700 text-white px-6 py-2.5 rounded-full
-              text-base font-medium shadow-md transition-all duration-300"
+            <motion.div
+              className="w-[350px] md:w-[500px] h-[240px] md:h-[380px] 
+              rounded-2xl overflow-hidden shadow-xl border-2 border-white/30 
+              backdrop-blur-md bg-white/40"
+              animate={{
+                y: [0, -15, 0],
+              }}
+              transition={{
+                duration: 6,
+                repeat: Infinity,
+                ease: "easeInOut",
+              }}
             >
-              Jelajahi SOP
-            </a>
-          </div>
-        </div>
-      </section>
-
-        { /* LOGO SECTION — sekarang berada di area merah */}
-        <div className="max-w-7xl mx-auto mt-22 mb-22 px-4 md:px-10">
-
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-10 items-center justify-center">
-            {logos.map((logo, index) => (
               <img
-                key={index}
-                src={logo.src}
-                alt={logo.alt}
-                className="w-24 md:w-28 mx-auto opacity-70 hover:opacity-100 hover:grayscale-0 grayscale transition"
+                src="/images/otsuka.jpg"
+                alt="Otsuka"
+                className="w-full h-full object-cover"
               />
-            ))}
+            </motion.div>
+          </motion.div>
+
+            {/* Left Content */}
+            <motion.div
+              className="flex flex-col text-center md:text-left max-w-xl order-2 md:order-1"
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, delay: 0.2 }}
+            >
+              <h1 className="text-blue-700 font-bold text-3xl md:text-5xl leading-snug">
+                INOVASI KESEHATAN.
+                <br />
+                UNTUK SEMUA ORANG.
+              </h1>
+
+              <p className="text-gray-600 mt-4 text-base md:text-lg leading-relaxed">
+                Menyediakan standar operasional prosedur dengan informasi yang tepat, cepat,
+                dan mudah diakses untuk mendukung peningkatan kualitas kesehatan masyarakat.
+              </p>
+
+              <motion.div
+                className="mt-6 flex justify-center md:justify-start"
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                transition={{ duration: 0.8, delay: 0.4 }}
+              >
+                <a
+                  href="#sop"
+                  className="bg-blue-600 hover:bg-blue-700 text-white px-6 py-2.5 rounded-full
+                  text-base font-medium shadow-md transition-all duration-300"
+                >
+                  Jelajahi SOP
+                </a>
+              </motion.div>
+            </motion.div>
+        </section>
+
+          {/* LOGO SECTION */}
+          <div className="max-w-7xl mx-auto mt-22 mb-22 px-4 md:px-10">
+            <motion.div
+              className="grid grid-cols-2 md:grid-cols-4 gap-10 items-center justify-center cursor-pointer"
+              initial="hidden"
+              animate="visible"
+              variants={{
+                hidden: {},
+                visible: {
+                  transition: {
+                    staggerChildren: 0.15,
+                  },
+                },
+              }}
+            >
+              {logos.map((logo, index) => (
+                <motion.img
+                  key={index}
+                  src={logo.src}
+                  alt={logo.alt}
+                  className="w-24 md:w-28 mx-auto opacity-70 hover:opacity-100 hover:grayscale-0 grayscale transition"
+                  variants={{
+                    hidden: { opacity: 0, y: 20 },
+                    visible: { opacity: 1, y: 0 },
+                  }}
+                  transition={{ duration: 0.6 }}
+                />
+              ))}
+            </motion.div>
           </div>
-        </div>
 
 
         {/* SECTION SOP */}
-        <section className="max-w-7xl z-20 mx-auto scroll-mt-30 px-4 mt-46 pb-20" id="sop">
-          <div className="flex items-center justify-between mb-3">
-            <h3 className="text-xl font-bold text-[#0344C0] text-center">STANDARD OPERATING PROCEDURE</h3>
-            <span className="text-sm text-gray-500">{SOP.length} SOP</span>
-          </div>
+      
 
-          <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
-        {currentItems.map((item) => (
-          <div
-            key={item.id}
-            className="bg-white rounded-xl shadow hover:shadow-lg transition p-3 flex flex-col cursor-pointer"
-            onClick={() => handleSelect(item)}
+        <section
+          className="max-w-7xl z-20 mx-auto scroll-mt-30 px-4 mt-46 pb-20"
+          id="sop"
+        >
+          {/* HEADER */}
+          <motion.div
+            className="flex items-center justify-between mb-3"
+            initial={{ opacity: 0, y: -10 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6 }}
           >
-            <div className="relative group">
-              <Image
-                src={item.image} 
-                alt={item.name}
-                width={300}
-                height={200}
-                className="rounded-lg object-cover w-full h-[200px] bg-gray-50 transition-all duration-300 group-hover:brightness-75"
-              />
+            <h3 className="text-xl font-bold text-blue-700 text-center">
+              STANDARD OPERATING PROCEDURE
+            </h3>
+            <span className="text-sm text-gray-500">{SOP.length} SOP</span>
+          </motion.div>
 
-              {/* Overlay hover */}
-              <div className="absolute inset-0 bg-black/40 rounded-lg opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
-                <FaEye className="text-white text-3xl" />
-              </div>
-            </div>
-
-            <div className="flex-1 flex flex-col mt-3">
-              <h4 className="font-semibold text-gray-900 mt-1 line-clamp-2 whitespace-pre-line">
-                {item.name}
-              </h4>
-
-              <button
+          {/* GRID ANIMATION WRAPPER */}
+          <motion.div
+            className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4"
+            initial="hidden"
+            animate="visible"
+            variants={{
+              hidden: {},
+              visible: {
+                transition: { staggerChildren: 0.12 },
+              },
+            }}
+          >
+            {currentItems.map((item) => (
+              <motion.div
+                key={item.id}
+                className="bg-white rounded-xl shadow hover:shadow-lg transition p-3 flex flex-col cursor-pointer"
                 onClick={() => handleSelect(item)}
-                className="mt-3 text-center cursor-pointer bg-blue-600 text-white py-2 rounded-lg hover:bg-blue-700 transition"
+                variants={{
+                  hidden: { opacity: 0, y: 25 },
+                  visible: { opacity: 1, y: 0 },
+                }}
+                whileHover={{ scale: 1.03 }}
+                transition={{ duration: 0. }}
               >
-                Detail
-              </button>
-            </div>
-          </div>
-        ))}
-      </div>
+                <div className="relative group">
+                  <Image
+                    src={item.image}
+                    alt={item.name}
+                    width={300}
+                    height={200}
+                    className="rounded-lg object-cover w-full h-[200px] bg-gray-50 transition-all duration-300 group-hover:brightness-75"
+                  />
 
-      {/* PAGINATION */}
-
-
-      {/* MODAL DETAIL SOP */}
-      <Dialog open={open} onOpenChange={setOpen}>
-          <DialogContent className="w-full max-w-md sm:max-w-lg md:max-w-2xl mx-auto">
-            <DialogHeader>
-              <DialogTitle>{selected?.name}</DialogTitle>
-            </DialogHeader>
-
-            {/* IMAGE */}
-            <div className="mt-2 w-full h-[250px] relative">
-              <Image
-                src={selected?.image || "/images/default.jpg"}
-                alt={selected?.name || "SOP Image"}
-                fill
-                className="object-cover rounded-lg"
-              />
-            </div>
-
-            {/* SCROLLABLE CONTENT */}
-            <div className="mt-4 text-sm max-h-[350px] overflow-y-auto pr-2">
-              <p><strong>Tujuan:</strong> {selected?.tujuan}</p>
-              <p className="mt-2"><strong>Ruang Lingkup:</strong> {selected?.ruangLingkup}</p>
-
-              <div className="mt-2">
-                <p className="font-bold">Prosedur:</p>
-
-                <div className="mt-2 space-y-4">
-                  {selected?.prosedur?.map((item, idx) => (
-                    <div key={idx}>
-                      {item.judul && (
-                        <p className="font-bold">{item.judul}</p>
-                      )}
-                      <p className="text-justify mt-1">
-                        {item.isi}
-                      </p>
-                    </div>
-                  ))}
+                  {/* Overlay hover */}
+                  <div className="absolute inset-0 bg-black/40 rounded-lg opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
+                    <FaEye className="text-white text-3xl" />
+                  </div>
                 </div>
-              </div>
-            </div>
 
-          </DialogContent>
-        </Dialog>
+                <div className="flex-1 flex flex-col mt-3">
+                  <h4 className="font-semibold text-gray-900 mt-1 line-clamp-2 whitespace-pre-line">
+                    {item.name}
+                  </h4>
 
-
+                  <button
+                    onClick={() => handleSelect(item)}
+                    className="mt-3 text-center cursor-pointer bg-blue-600 text-white py-2 rounded-lg hover:bg-blue-700 transition"
+                  >
+                    Detail
+                  </button>
+                </div>
+              </motion.div>
+            ))}
+          </motion.div>
 
           {/* PAGINATION */}
-          <Pagination className="mt-6 items-end justify-end">
-            <PaginationContent>
-              <PaginationItem>
-                <PaginationPrevious
-                  href="#sop"
-                  onClick={() => currentPage > 1 && setCurrentPage(currentPage - 1)}
-                />
-              </PaginationItem>
+          {/* (pagination tidak perlu animasi karena statis) */}
+<Pagination className="mt-6 items-end justify-end">
+   <PaginationContent>
+     <PaginationItem> 
+      <PaginationPrevious href="#sop" onClick={() => currentPage > 1 && setCurrentPage(currentPage - 1)} />
+         </PaginationItem> {[...Array(totalPages)].map((_, index) => (
+           <PaginationItem key={index}>
+             <PaginationLink href="#sop" isActive={currentPage === index + 1} onClick={() => setCurrentPage(index + 1)} > 
+              {index + 1}
+               </PaginationLink>
+                </PaginationItem> ))}
+                 {totalPages > 5 && <PaginationEllipsis />}
+                 <PaginationItem> 
+                  <PaginationNext href="#sop" onClick={() => currentPage < totalPages && setCurrentPage(currentPage + 1)} /> </PaginationItem> </PaginationContent> </Pagination>
+          {/* MODAL DETAIL */}
+          <Dialog open={open} onOpenChange={setOpen}>
+            <DialogContent className="w-full max-w-md sm:max-w-lg md:max-w-2xl mx-auto">
+              <DialogHeader>
+                <DialogTitle>{selected?.name}</DialogTitle>
+              </DialogHeader>
 
-              {[...Array(totalPages)].map((_, index) => (
-                <PaginationItem key={index}>
-                  <PaginationLink
-                    href="#sop"
-                    isActive={currentPage === index + 1}
-                    onClick={() => setCurrentPage(index + 1)}
-                  >
-                    {index + 1}
-                  </PaginationLink>
-                </PaginationItem>
-              ))}
+              <motion.div
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                transition={{ duration: 0.5 }}
+              >
+                <div className="mt-2 w-full h-[250px] relative">
+                  <Image
+                    src={selected?.image || "/images/default.jpg"}
+                    alt={selected?.name || "SOP Image"}
+                    fill
+                    className="object-cover rounded-lg"
+                  />
+                </div>
 
-              {totalPages > 5 && <PaginationEllipsis />}
+                <div className="mt-4 text-sm max-h-[350px] overflow-y-auto pr-2">
+                  <p><strong>Tujuan:</strong> {selected?.tujuan}</p>
+                  <p className="mt-2"><strong>Ruang Lingkup:</strong> {selected?.ruangLingkup}</p>
 
-              <PaginationItem>
-                <PaginationNext
-                  href="#sop"
-                  onClick={() => currentPage < totalPages && setCurrentPage(currentPage + 1)}
-                />
-              </PaginationItem>
-            </PaginationContent>
-          </Pagination>
-        </section>
+                  <div className="mt-2">
+                    <p className="font-bold">Prosedur:</p>
+
+                    <div className="mt-2 space-y-4">
+                      {selected?.prosedur?.map((item, idx) => (
+                        <div key={idx}>
+                          {item.judul && <p className="font-bold">{item.judul}</p>}
+                          <p className="text-justify mt-1">{item.isi}</p>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+                </div>
+              </motion.div>
+            </DialogContent>
+          </Dialog>
+       </section>
+
 
 
 
         {/* SECTION ABOUT */}
          <section className="relative w-full py-28 bg-white" id="about">
-          <div className="max-w-7xl mx-auto px-4 md:px-10">
+            <div className="max-w-7xl mx-auto px-4 md:px-10">
 
+              {/* CONTENT */}
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
 
-            {/* TOP — 4 LOGO */}
-            {/* <div className="grid grid-cols-2 md:grid-cols-4 gap-6 items-center justify-center mb-22">
-              {logos.map((logo, index) => (
-                <img
-                  key={index}
-                  src={logo.src}
-                  alt={logo.alt}
-                  className="w-32 mx-auto opacity-70 hover:opacity-100 hover:grayscale-0 grayscale transition"
-                />
-              ))}
-            </div> */}
+                {/* LEFT — TEXT */}
+                <motion.div
+                  className="space-y-4 mb-30"
+                  initial={{ opacity: 0, y: 30 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.8 }}
+                  viewport={{ once: true }}
+                >
+                  <h2 className="text-4xl font-bold text-blue-600">Tentang Perusahaan</h2>
 
-            {/* CONTENT */}
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+                  <p className="text-gray-600 leading-relaxed">
+                    Otsuka berkomitmen untuk menghadirkan inovasi di bidang kesehatan
+                    dan memberikan solusi terbaik bagi masyarakat. Kami terus
+                    mengembangkan produk berkualitas tinggi melalui standar operasi
+                    yang ketat dan tenaga profesional yang berpengalaman.
+                  </p>
+                </motion.div>
 
-              {/* LEFT — TEXT */}
-              <div className="space-y-4 mb-30">
-                <h2 className="text-4xl font-bold text-[#171b21]">Tentang Perusahaan</h2>
-                <p className="text-gray-600 leading-relaxed">
-                  Otsuka berkomitmen untuk menghadirkan inovasi di bidang kesehatan
-                  dan memberikan solusi terbaik bagi masyarakat. Kami terus
-                  mengembangkan produk berkualitas tinggi melalui standar operasi
-                  yang ketat dan tenaga profesional yang berpengalaman.
-                </p>
-              </div>
+                {/* RIGHT — IMAGE */}
+                <motion.div
+                  className="flex justify-center"
+                  initial={{ opacity: 0, x: 40 }}
+                  whileInView={{ opacity: 1, x: 0 }}
+                  transition={{ duration: 0.8, delay: 0.2 }}
+                  viewport={{ once: true }}
+                >
+                  <img
+                    src="/images/about.jpg"
+                    alt="About Image"
+                    className="w-full max-w-md rounded-xl shadow-lg"
+                  />
+                </motion.div>
 
-              {/* RIGHT — IMAGE */}
-              <div className="flex justify-center">
-                <img
-                  src="/images/about.jpg"
-                  alt="About Image"
-                  className="w-full max-w-md rounded-xl shadow-lg"
-                />
               </div>
             </div>
-          </div>
-        </section>
+          </section>
 
 
         {/* SECTION CONTACT */}
         <section className="relative py-24" id="contact">
 
           {/* Background hanya setengah tinggi */}
-          <div className="absolute inset-0 h-1/2 bg-[#0a1f33]"></div>
+          <div className="absolute inset-0 h-1/2 "></div>
 
           {/* TITLE */}
-          <h2 className="text-center text-3xl font-bold text-white relative z-10 tracking-wider">
+          <motion.h2
+            initial={{ opacity: 0, y: -20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6 }}
+            viewport={{ once: true }}
+            className="text-center text-3xl font-bold text-blue-600 relative z-10 tracking-wider"
+          >
             LET’S KEEP IN TOUCH
-          </h2>
+          </motion.h2>
 
           {/* DESCRIPTION */}
-          <p className="text-center text-gray-300 max-w-2xl mx-auto mt-3 mb-12 text-sm md:text-base relative z-10">
+          <motion.p
+            initial={{ opacity: 0, y: 10 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.15 }}
+            viewport={{ once: true }}
+            className="text-center text-gray-600 max-w-2xl mx-auto mt-3 mb-12 text-sm md:text-base relative z-10"
+          >
             Have questions, project ideas, or partnership inquiries?
             We’d love to hear from you. Leave a message and our team will reach out
             as soon as possible.
-          </p>
+          </motion.p>
 
-          {/* CONTACT CONTAINER */}
           {/* CONTACT CONTAINER */}
           <div className="relative z-10 max-w-6xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-6 px-4">
 
             {/* LEFT SIDE - CONTACT INFO */}
-            <div className="bg-blue-500 text-white p-10 rounded-xl shadow-lg">
+            <motion.div
+              initial={{ opacity: 0, x: -40 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.7 }}
+              viewport={{ once: true }}
+              className="bg-blue-500 text-white p-10 rounded-xl shadow-lg"
+            >
               <Card className="bg-transparent border-none shadow-none text-white">
                 <CardHeader>
                   <CardTitle className="text-xl font-semibold">Our Contacts</CardTitle>
@@ -436,7 +487,7 @@ const [openh, setOpenh] = useState(false);
                 <CardContent className="space-y-6 text-white text-sm">
                   <div className="flex gap-3 items-start">
                     <MapPin className="w-5" />
-                    <p>8R2W+332 Malang, Jl. Raya Pasuruan No.KM11, Tromo Barat, Pacar Keling, Kec. Kejayan, Pasuruan, Jawa Timur 67172</p>
+                    <p>8R2W+332 Malang, Jl. Raya Pasuruan No.KM11, Tromo Barat...</p>
                   </div>
 
                   <div className="flex gap-3 items-start">
@@ -453,10 +504,16 @@ const [openh, setOpenh] = useState(false);
                   </div>
                 </CardContent>
               </Card>
-            </div>
+            </motion.div>
 
             {/* RIGHT SIDE - FORM */}
-            <div className="p-10 bg-white rounded-xl shadow-lg">
+            <motion.div
+              initial={{ opacity: 0, x: 40 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.7, delay: 0.15 }}
+              viewport={{ once: true }}
+              className="p-10 bg-white rounded-xl shadow-lg"
+            >
               <Card className="border-none shadow-none">
                 <CardHeader>
                   <CardTitle className="text-xl font-semibold">Send us a message</CardTitle>
@@ -489,13 +546,14 @@ const [openh, setOpenh] = useState(false);
                   </form>
                 </CardContent>
               </Card>
-            </div>
+            </motion.div>
 
           </div>
 
         </section>
 
-        <footer className="bg-[#0a1f33] text-gray-300 py-10 md:py-14 mt-20">
+
+        <footer className="bg-blue-600 text-gray-300 py-10 md:py-14 mt-20">
           <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-10 px-6">
 
             {/* ABOUT */}
@@ -556,7 +614,7 @@ const [openh, setOpenh] = useState(false);
           </div>
 
           {/* SOCIAL + COPYRIGHT */}
-          <div className="border-t border-gray-700 mt-10 pt-6 flex flex-col justify-center items-center gap-4 px-6 text-center">
+          <div className="border-t border-white mt-10 pt-6 flex flex-col justify-center items-center gap-4 px-6 text-center">
 
             {/* SOCIAL ICONS */}
             <div className="flex gap-4 justify-center">
@@ -566,7 +624,7 @@ const [openh, setOpenh] = useState(false);
               <Twitter className="w-5 hover:text-white cursor-pointer transition" />
             </div>
 
-            <p className="text-xs text-gray-400">
+            <p className="text-xs text-white">
               © 2025 Oli Samping Studio. All rights reserved.
             </p>
           </div>
